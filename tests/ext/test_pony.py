@@ -67,7 +67,7 @@ def app(pony_db, pony_user, pony_order, model_cls, model_with_rel_cls):
     @app.get("/relationship/limit-offset", response_model=LimitOffsetPage[model_pony_with_rel_cls])
     def route():
         with db_session:
-            return paginate(select(p for p in pony_user))
+            return paginate(select(iter(pony_user)))
 
     return add_pagination(app)
 

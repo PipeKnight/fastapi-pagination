@@ -42,10 +42,7 @@ def db_client(database_url, be_user):
     ids=["model", "query"],
 )
 def query(request, be_user):
-    if request.param:
-        return be_user
-
-    return be_user.find()
+    return be_user if request.param else be_user.find()
 
 
 @fixture(scope="session")

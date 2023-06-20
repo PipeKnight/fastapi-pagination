@@ -19,10 +19,7 @@ class Links(BaseModel):
 
 
 def _only_path(url: URL) -> str:
-    if not url.query:
-        return str(url.path)
-
-    return f"{url.path}?{url.query}"
+    return str(url.path) if not url.query else f"{url.path}?{url.query}"
 
 
 def _update_path(url: URL, to_update: Optional[Mapping[str, Any]]) -> Optional[str]:

@@ -56,10 +56,7 @@ class UserWithRelationOut(PydanticModel):
     ids=["model", "query"],
 )
 def query(request):
-    if request.param:
-        return lambda: User
-
-    return lambda: User.all()
+    return (lambda: User) if request.param else (lambda: User.all())
 
 
 @fixture(scope="session")

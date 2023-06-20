@@ -67,10 +67,7 @@ def resolve_params(params: Optional[TAbstractParams] = None) -> TAbstractParams:
 
 
 def resolve_items_transformer(transformer: Optional[ItemsTransformer] = None) -> Optional[ItemsTransformer]:
-    if transformer is None:
-        return _items_transformer_val.get()
-
-    return transformer
+    return _items_transformer_val.get() if transformer is None else transformer
 
 
 def pagination_items() -> Sequence[Any]:

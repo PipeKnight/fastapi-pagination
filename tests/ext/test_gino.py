@@ -38,10 +38,7 @@ def User(db):
     ids=["model", "query"],
 )
 def query(request, User):
-    if request.param:
-        return User
-
-    return User.query
+    return User if request.param else User.query
 
 
 @fixture(scope="session")

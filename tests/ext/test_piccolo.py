@@ -33,10 +33,7 @@ class User(Table, tablename="users"):
     ids=["model", "query"],
 )
 def query(request):
-    if request.param:
-        return User
-
-    return User.select()
+    return User if request.param else User.select()
 
 
 DB = SQLiteEngine()
