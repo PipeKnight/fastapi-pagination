@@ -39,10 +39,7 @@ def user(db_connect):
     ids=["model", "query"],
 )
 def query(request, user):
-    if request.param:
-        return user
-
-    return user.objects.all()
+    return user if request.param else user.objects.all()
 
 
 @fixture(scope="session")

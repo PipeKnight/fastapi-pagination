@@ -42,6 +42,6 @@ class TestIterablesPagination(BasePaginationTestCase):
         async def route(skip_len: bool = Query(False)):
             kwargs = {} if skip_len else {"total": len(entities)}
 
-            return paginate((entity for entity in entities), **kwargs)
+            return paginate(iter(entities), **kwargs)
 
         return add_pagination(app)

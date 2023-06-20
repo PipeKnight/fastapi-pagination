@@ -192,11 +192,9 @@ def test_deprecated_signature():
     # not a classmethod
     with warns(DeprecationWarning, match=massage):
 
+
+
+
         class P7(Page[T], Generic[T]):
-            def create(
-                cls,
-                data: Sequence[T],
-                params: AbstractParams,
-                **kwargs,
-            ) -> Page[T]:
+            def create(self, data: Sequence[T], params: AbstractParams, **kwargs) -> Page[T]:
                 pass

@@ -51,7 +51,9 @@ class UserOut(UserIn):
 @asynccontextmanager
 async def lifespan() -> None:
     connect(host="mongodb://localhost:27017")
-    User.objects().insert([User(name=faker.name(), email=faker.email()) for i in range(100)])
+    User.objects().insert(
+        [User(name=faker.name(), email=faker.email()) for _ in range(100)]
+    )
     yield
 
 

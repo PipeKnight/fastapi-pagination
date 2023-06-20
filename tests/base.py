@@ -94,10 +94,7 @@ class BasePaginationTestCase:
 
     @fixture(scope="session")
     def result_model_cls(self, model_cls, model_with_rel_cls, pagination_type):
-        if pagination_type == "relationship":
-            return model_with_rel_cls
-
-        return model_cls
+        return model_with_rel_cls if pagination_type == "relationship" else model_cls
 
     async def run_pagination_test(
         self,
